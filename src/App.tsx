@@ -125,7 +125,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="rootContainer">
       {loading && (
         <div className="overlay">
           <TailSpin

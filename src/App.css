@@ -48,8 +48,6 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  /* スクロールバーを隠す */
 }
 
 /* ルートコンテナに適用するスタイル */
@@ -57,11 +55,13 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  /* ビューポートの高さに合わせる */
+  justify-content: flex-start;
+  /* 上部に寄せる */
+  min-height: 100vh;
+  /* 最小高さをビューポートの高さに合わせる */
   width: 100vw;
-  /* ビューポートの幅に合わせる */
   background: url('https://pub-5c00d9cd767343259424b03f8a52941a.r2.dev/和.jpg') no-repeat center center fixed;
   background-size: cover;
+  overflow: auto;
+  /* 必要に応じてスクロールバーを表示 */
 }
