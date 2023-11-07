@@ -15,6 +15,7 @@ function App() {
   const [tabValue, setTabValue] = useState(0);
   const [loading, setLoading] = useState(true);
   const [myGallary, setMyGallary] = useState<SpecialMoveDto[]>([]);
+  const [myId, setMyId] = useState('');
 
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setTabValue(newValue);
@@ -49,7 +50,7 @@ function App() {
               {`${index + 1}位`}
             </Typography>
           </Box>
-          <SpecialMoveCard data={item} myGallary={myGallary} idToken={idToken} />
+          <SpecialMoveCard data={item} myGallary={myGallary} idToken={idToken} myId={myId} />
         </Box>
       );
     });
@@ -99,6 +100,13 @@ function App() {
 
       const token = liff.getIDToken();
       setIdToken(token);
+
+      try {
+        const profile = await liff.getProfile();
+        setMyId(profile.userId);
+      } catch (err) {
+        console.log("error", err);
+      }
 
       const baseUrl = 'https://original-specialmove.onrender.com';
       // fetch のリクエスト
